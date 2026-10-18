@@ -121,5 +121,8 @@ class PayNowStatusUpdateAdmin(admin.ModelAdmin):
         'paynow_reference',
     ]
     
-    readonly_fields = '__all__'
+    #readonly_fields = '__all__'
+
+    def get_readonly_fields(self, request, obj=None):
+        return [f.name for f in self.model._meta.fields]
 
